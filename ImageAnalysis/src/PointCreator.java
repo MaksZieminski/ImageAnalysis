@@ -8,6 +8,7 @@ public class PointCreator {
 	
 	public static Point[] createPoints(File img) throws FileNotFoundException{
 		
+		Point.resetCounter();
 		Scanner scanner = new Scanner(img);
 		List<Point> points = new ArrayList<Point>();
 		
@@ -26,10 +27,6 @@ public class PointCreator {
 			}
 			
 			points.add(p);
-			
-			System.out.println("X:" + p.x + " Y:"+p.y);
-			for(int i=0; i<p.features.length; i++)
-			System.out.println("Feature-" +(i+1) + ": "+ p.features[i]);
 		}
 		
 		scanner.close();

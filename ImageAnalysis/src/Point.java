@@ -3,8 +3,8 @@ import java.util.Optional;
 
 public class Point 
 {
-	static int count;
-	int id;
+	private static int count;
+	int id = 0;
 	public float getX() {
 		return x;
 	}
@@ -26,13 +26,17 @@ public class Point
 	short[] features = new short[128];
 	
 	
-	Point()
+	public Point()
 	{
-		id=count+1;
+		id=count;
 		count++;
 	}
 	
-	private Point getNearestPoint(ArrayList<Point> points)
+	public static void resetCounter(){
+		count = 0;
+	}
+	
+	public Point getNearestPoint(ArrayList<Point> points)
 	{
 		float nearestDistance = 1000000000;
 		int nearestPointId = -1;
@@ -60,9 +64,8 @@ public class Point
 	
 	private float getDistance(Point point)
 	{
-		
-		float distance = (float) Math.sqrt((this.x - point.x)*(this.x - point.x) - (this.y - point.y)*(this.y - point.y));
-		return distance>0? distance : -distance;
+		float distance = (float) Math.hypot(this.x - point.x, this.y - point.y);
+		return distance;
 	}
 	
 	
