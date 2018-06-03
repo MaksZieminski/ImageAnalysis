@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Optional;
 
 public class Point 
 {
@@ -15,28 +16,31 @@ public class Point
 		count++;
 	}
 	
-	private Point getNearestPoint(ArrayList<Point> points)
+	private Optional<Point> getNearestPoint(ArrayList<Point> points)
 	{
-		int nearestDistance = 1000000000;
+		float nearestDistance = 1000000000;
 		int nearestPointId = -1;
 		
 		for(int i=0; i<points.size(); i++)
 		{
 			if (nearestDistance > this.getDistance(points.get(i)))
 			{
-				
 				nearestPointId = points.get(i).id;
 				nearestDistance = this.getDistance(points.get(i));
 			}
 		}
 		
-		return points.get(nearestPointId);
+		final int pointId = nearestPointId;
+		return points.stream().findAny().filter(p->p.id==pointId);
+		
+	
 	}
 	
-	private int getDistance(Point point)
+	private float getDistance(Point point)
 	{
 		
-		return 0;
+		float distance = (float) Math.sqrt((this.x - point.x)*(this.x - point.x) - (this.y - point.y)*(this.y - point.y));
+		return distance>0? distance : -distance;
 	}
 	
 	
