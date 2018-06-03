@@ -11,7 +11,7 @@ public class ImageAnalysis {
 		Point[] points1 = PointCreator.createPoints(img1);
 	
 		
-		System.out.println("elo, sprawdz to: " + points1[0].getX() + " " + points1[0].getY() + " " + points1[0].features.length);
+		//System.out.println("elo, sprawdz to: " + points1[0].getX() + " " + points1[0].getY() + " " + points1[0].features.length);
 		
 
 	}

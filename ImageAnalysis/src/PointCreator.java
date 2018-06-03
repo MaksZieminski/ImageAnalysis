@@ -11,19 +11,24 @@ public class PointCreator {
 		Scanner scanner = new Scanner(img);
 		List<Point> points = new ArrayList<Point>();
 		
-		scanner.nextLine();
-		scanner.nextLine();
 		
 		while(scanner.hasNextLine()){
 			Point p = new Point();
-			p.setX(scanner.nextFloat());
-			p.setY(scanner.nextFloat());
+			String line = scanner.nextLine();
+			String[] values = line.split(" ");
+			p.setX(Float.parseFloat(values[0]));
+			p.setY(Float.parseFloat(values[1]));
 			
-			for(int i = 0; scanner.hasNext(); i++){
-				p.features[i] = scanner.nextShort();
+			
+			
+			for(int i=5; i<128; i++) {
+				//p.features.add(values[i]);
 			}
 			points.add(p);
+			
+			System.out.println("X: " + p.x + " Y: "+p.y);
 		}
+		
 		scanner.close();
 		
 		return points.toArray(new Point[points.size()]);
