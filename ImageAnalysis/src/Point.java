@@ -5,6 +5,22 @@ public class Point
 {
 	static int count;
 	int id;
+	public float getX() {
+		return x;
+	}
+
+	public void setX(float x) {
+		this.x = x;
+	}
+
+	public float getY() {
+		return y;
+	}
+
+	public void setY(float y) {
+		this.y = y;
+	}
+
 	float x;
 	float y;
 	short[] features = new short[128];
