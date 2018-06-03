@@ -32,7 +32,7 @@ public class Point
 		count++;
 	}
 	
-	private Optional<Point> getNearestPoint(ArrayList<Point> points)
+	private Point getNearestPoint(ArrayList<Point> points)
 	{
 		float nearestDistance = 1000000000;
 		int nearestPointId = -1;
@@ -46,11 +46,17 @@ public class Point
 			}
 		}
 		
-		final int pointId = nearestPointId;
-		return points.stream().findAny().filter(p->p.id==pointId);
+		for(int i=0; i<points.size(); i++)
+		{
+			if(points.get(i).id==nearestPointId)
+			{
+				return points.get(i);
+			}
+		}
 		
-	
+		return null;
 	}
+	
 	
 	private float getDistance(Point point)
 	{

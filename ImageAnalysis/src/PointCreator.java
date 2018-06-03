@@ -18,8 +18,6 @@ public class PointCreator {
 			String line = scanner.nextLine();
 			String[] values = line.split(" ");
 			p.setX(Float.parseFloat(values[0]));
-			
-			if(values.length>1)
 			p.setY(Float.parseFloat(values[1]));
 			
 			for(int i=5; i<133; i++) {
@@ -29,9 +27,9 @@ public class PointCreator {
 			
 			points.add(p);
 			
-			System.out.println("X: " + p.x + " Y: "+p.y);
+			System.out.println("X:" + p.x + " Y:"+p.y);
 			for(int i=0; i<p.features.length; i++)
-			System.out.println("Feature: " +i + ": "+ p.features[i]);
+			System.out.println("Feature-" +(i+1) + ": "+ p.features[i]);
 		}
 		
 		scanner.close();
