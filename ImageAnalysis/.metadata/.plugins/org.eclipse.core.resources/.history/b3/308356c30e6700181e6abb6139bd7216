@@ -1,0 +1,9 @@
+
+public class Point 
+{
+	double x;
+	double y;
+	int[] features = new int[128];
+ 
+}
+
