@@ -11,14 +11,14 @@ public class PointCreator {
 		Scanner scanner = new Scanner(img);
 		List<Point> points = new ArrayList<Point>();
 		
-		
 		while(scanner.hasNextLine()){
 			Point p = new Point();
 			String line = scanner.nextLine();
 			String[] values = line.split(" ");
 			p.setX(Float.parseFloat(values[0]));
-			p.setY(Float.parseFloat(values[1]));
 			
+			if(values.length>1)
+			p.setY(Float.parseFloat(values[1]));
 			
 			
 			for(int i=5; i<128; i++) {
