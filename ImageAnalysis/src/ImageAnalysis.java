@@ -28,8 +28,8 @@ public class ImageAnalysis {
 	
 	public static void main(String[] args) throws FileNotFoundException {
 		
-		File img1 = new File("photos/rsz_dsc_0283.png.haraff.sift");
-		File img2 = new File("photos/rsz_dsc_0284.png.haraff.sift");
+		File img1 = new File("photos/rsz_dsc_0287.png.haraff.sift");
+		File img2 = new File("photos/rsz_dsc_0288.png.haraff.sift");
 
 		Point[] points1 = PointCreator.createPoints(img1);
 		Point[] points2 = PointCreator.createPoints(img2);
