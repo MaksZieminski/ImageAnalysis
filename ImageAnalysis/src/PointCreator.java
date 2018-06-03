@@ -11,6 +11,8 @@ public class PointCreator {
 		Scanner scanner = new Scanner(img);
 		List<Point> points = new ArrayList<Point>();
 		
+		scanner.nextLine();
+		scanner.nextLine();
 		while(scanner.hasNextLine()){
 			Point p = new Point();
 			String line = scanner.nextLine();
@@ -20,13 +22,16 @@ public class PointCreator {
 			if(values.length>1)
 			p.setY(Float.parseFloat(values[1]));
 			
-			
-			for(int i=5; i<128; i++) {
-				//p.features.add(values[i]);
+			for(int i=5; i<133; i++) {
+				
+				p.features[i-5] = Short.parseShort(values[i]);
 			}
+			
 			points.add(p);
 			
 			System.out.println("X: " + p.x + " Y: "+p.y);
+			for(int i=0; i<p.features.length; i++)
+			System.out.println("Feature: " +i + ": "+ p.features[i]);
 		}
 		
 		scanner.close();
