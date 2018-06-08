@@ -23,7 +23,9 @@ public class PointCreator {
 			
 			for(int i=5; i<133; i++) {
 				
-				p.features[i-5] = Short.parseShort(values[i]);
+				ArrayList<Integer> features = new ArrayList<>();
+				
+				features.add(Integer.parseInt(values[i]));
 			}
 			
 			points.add(p);
