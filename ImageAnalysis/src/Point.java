@@ -5,6 +5,17 @@ public class Point
 {
 	private static int count;
 	int id = 0;
+	float x;
+	float y;
+	short[] features = new short[128];
+	Point nearestPoint;
+	
+	public Point()
+	{
+		id=count;
+		count++;
+	}
+	
 	public float getX() {
 		return x;
 	}
@@ -20,28 +31,25 @@ public class Point
 	public void setY(float y) {
 		this.y = y;
 	}
-
-	float x;
-	float y;
-	short[] features = new short[128];
 	
-	
-	public Point()
-	{
-		id=count;
-		count++;
+	public int getId() {
+		return id;
 	}
-	
+
+	public Point getNearestPoint() {
+		return nearestPoint;
+	}
+
 	public static void resetCounter(){
 		count = 0;
 	}
 	
-	public Point getNearestPoint(ArrayList<Point> points)
+	public Point calculateNearestPoint(ArrayList<Point> points)
 	{
-		float nearestDistance = 1000000000;
-		int nearestPointId = -1;
+		int nearestDistance = this.getDistance(points.get(0));
+		int nearestPointId = points.get(0).id;
 		
-		for(int i=0; i<points.size(); i++)
+		for(int i=1; i<points.size(); i++)
 		{
 			if (nearestDistance > this.getDistance(points.get(i)))
 			{
@@ -54,19 +62,21 @@ public class Point
 		{
 			if(points.get(i).id==nearestPointId)
 			{
+				nearestPoint =points.get(i);
 				return points.get(i);
 			}
 		}
-		
 		return null;
 	}
 	
-	
-	private float getDistance(Point point)
+	private int getDistance(Point point)
 	{
-		float distance = (float) Math.hypot(this.x - point.x, this.y - point.y);
+		int distance = 0;
+		
+		for(int i = 0; i < point.features.length; i++){
+			distance += Math.abs(point.features[i] - this.features[i]);
+		}
+		
 		return distance;
 	}
-	
-	
 }
