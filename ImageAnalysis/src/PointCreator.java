@@ -21,13 +21,12 @@ public class PointCreator {
 			p.setX(Float.parseFloat(values[0]));
 			p.setY(Float.parseFloat(values[1]));
 			
+			ArrayList<Integer> features = new ArrayList<>();
+			
 			for(int i=5; i<133; i++) {
-				
-				ArrayList<Integer> features = new ArrayList<>();
-				
 				features.add(Integer.parseInt(values[i]));
 			}
-			
+			p.setFeatures(features);
 			points.add(p);
 		}
 		

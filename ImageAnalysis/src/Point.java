@@ -6,6 +6,11 @@ public class Point {
 	private float x;
 	private float y;
 	private ArrayList<Integer> features = new ArrayList<>();
+	private ArrayList<Point> nearestPoints = new ArrayList<>();
+	
+	
+
+	
 	Point nearestPoint;
 	
 	public Point(){
@@ -49,18 +54,21 @@ public class Point {
 		
 		int nearestDistance = this.getDistance(points.get(0));
 		Point nearestPoint = points.get(0);
+		int nearestIndex = 0;
 		
 		for (int c = 0; c < n; c++) {
-
+			nearestDistance = this.getDistance(points.get(c));
 			for (int i = 1; i < points.size(); i++) {
 				if (nearestDistance > this.getDistance(points.get(i))) {
 					nearestPoint = points.get(i);
 					nearestDistance = this.getDistance(points.get(i));
+					nearestIndex=i;
 				}
 			}
 			nearestPoints.add(nearestPoint);
-			points.remove(nearestPoint);
+			points.remove(nearestIndex);
 		}
+		this.nearestPoints = nearestPoints;
 		return nearestPoints;
 	}
 	
@@ -96,10 +104,32 @@ public class Point {
 	public ArrayList<Integer> getFeatures() {
 		return features;
 	}
+	
+	public void setFeatures(ArrayList<Integer> features) {
+		this.features = features;
+	}
 
 	public Point getNearestPoint() {
 		return nearestPoint;
 	}
-
 	
+	public ArrayList<Point> getNearestPoints() {
+		return nearestPoints;
+	}
+
+	public void setNearestPoints(ArrayList<Point> nearestPoints) {
+		this.nearestPoints = nearestPoints;
+	}
+
+	public boolean isValidPair(Point p){
+			if(p.nearestPoint == this.nearestPoint)
+				return true;
+			else
+				return false;
+	}
+
 }
+
+
+
+
