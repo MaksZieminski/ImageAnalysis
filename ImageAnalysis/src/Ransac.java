@@ -12,9 +12,7 @@ public class Ransac {
 	
 	public void run(int iterations){
 		
-		float x1, y1, x2, y2, x3, y3;
-		float u1, v1, u2, v2, u3, v3;
-		double a,b,c,d,e,f;
+		
 		double matrixTemp1[][] = new double[6][6];
 		double matrixTemp2[][] = new double[1][6];
 		
