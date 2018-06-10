@@ -70,6 +70,7 @@ public static void main(String[] args) throws FileNotFoundException {
 		
 		
 		Ransac ransac = new Ransac(pairPoints);
+		ransac.run(10);
 		
 		
 		
