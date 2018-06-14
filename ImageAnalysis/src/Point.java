@@ -80,6 +80,9 @@ public class Point {
 		}
 		return distance;
 	}
+	
+	
+	
 
 	public float getX() {
 		return x;
